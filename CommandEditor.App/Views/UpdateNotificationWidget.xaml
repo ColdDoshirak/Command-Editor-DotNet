@@ -1,0 +1,40 @@
+<UserControl x:Class="CommandEditor.App.Views.UpdateNotificationWidget" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="35" d:DesignWidth="180"
+             Panel.ZIndex="10000">
+    <Border x:Name="NotificationBorder" Background="#FF5722" CornerRadius="4" Padding="8,4" Cursor="Hand">
+        <Border.Effect>
+            <DropShadowEffect Color="Black" BlurRadius="5" ShadowDepth="2" Opacity="0.3"/>
+        </Border.Effect>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="🔄" FontSize="14" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBlock x:Name="UpdateTextBlock" Text="Update available!" 
+                       Foreground="White" FontWeight="SemiBold" 
+                       FontSize="11" VerticalAlignment="Center"/>
+        </StackPanel>
+    </Border>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="MouseEnter">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ColorAnimation Storyboard.TargetName="NotificationBorder" 
+                                   Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                   To="#E65100" Duration="0:0:0.2"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="MouseLeave">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ColorAnimation Storyboard.TargetName="NotificationBorder" 
+                                   Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                   To="#FF5722" Duration="0:0:0.2"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>
+</UserControl>
